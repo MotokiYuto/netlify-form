@@ -14,6 +14,7 @@
 export default {
   methods: {
     topPage(){
+      conosle.log()
       this.$router.push({name: 'Home'});
     },
     subPage(){
