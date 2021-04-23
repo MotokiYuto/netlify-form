@@ -1,32 +1,59 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+<div id="app">
+  <div>
+    <button @click="topPage">トップページ</button>
+    <button @click="subPage">サブページ</button>
+    <button @click="userListPage">ユーザー一覧ページ（リダイレクトされる）</button>
+    <button @click="userListPageRedirect">ユーザー一覧ページ（リダイレクトされない）</button>
+    <router-view></router-view>
   </div>
+</div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+export default {
+  methods: {
+    topPage(){
+      this.$router.push({name: 'Home'});
+    },
+    subPage(){
+      this.$router.push({name: 'SubPage'});
+    },
+    userListPage(){
+      this.$router.push({name: 'UserList', query: {redirect: true}});
+    },
+    userListPageRedirect(){
+      this.$router.push({name: 'UserList'});
+    }
+  }
 }
+</script>
 
-#nav {
-  padding: 30px;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style scoped>
+#app{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(2);
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+button{
+  display: block;
+  margin: 20px;
 }
 </style>
